@@ -14,8 +14,15 @@ typedef struct Node {
     struct Node* right;
 } Node;
 
+Node* makeFunc(TypeTag type);
+void calc(Node* node);
+
 Node* makeFunc(TypeTag type) {
     Node* node = (Node*)malloc(sizeof(Node));
+    if (node == NULL) {
+        printf("Error: Memory allocation failed for node.\n");
+        exit(EXIT_FAILURE);
+    }
     node->type = type;
     node->left = NULL;
     node->right = NULL;
@@ -30,24 +37,30 @@ void calc(Node* node) {
 
     switch (node->type) {
         case ADD:
-            printf("add : %d\n", *((int*)node->left) + *((int*)node->right));
+            printf("add : %d\n", ((int*)node->left)[0] + ((int*)node->right)[0]);
             break;
         case MUL:
-            printf("mul : %d\n", *((int*)node->left) * *((int*)node->right));
+            printf("mul : %d\n", ((int*)node->left)[0] * ((int*)node->right)[0]);
             break;
         case SUB:
-            printf("sub : %d\n", *((int*)node->left) - *((int*)node->right));
+            printf("sub : %d\n", ((int*)node->left)[0] - ((int*)node->right)[0]);
             break;
-        case FIBO:
-            int n = *((int*)node->left);
-            int fib[n + 1];
+        case FIBO: {
+            int n = ((int*)node->left)[0];
+            int* fib = (int*)malloc((n + 1) * sizeof(int));
+            if (fib == NULL) {
+                printf("Error: Memory allocation failed for fibonacci array.\n");
+                exit(EXIT_FAILURE);
+            }
             fib[0] = 0;
             fib[1] = 1;
             for (int i = 2; i <= n; i++) {
                 fib[i] = fib[i - 1] + fib[i - 2];
             }
             printf("fibo : %d\n", fib[n]);
+            free(fib);
             break;
+        }
         default:
             printf("Invalid function type\n");
             break;
@@ -56,28 +69,21 @@ void calc(Node* node) {
 
 int main() {
     Node* add = makeFunc(ADD);
-    add->left = (Node*)malloc(sizeof(Node));
-    add->right = (Node*)malloc(sizeof(Node));
     *((int*)add->left) = 1;
     *((int*)add->right) = 2;
     calc(add);
 
     Node* mul = makeFunc(MUL);
-    mul->left = (Node*)malloc(sizeof(Node));
-    mul->right = (Node*)malloc(sizeof(Node));
     *((int*)mul->left) = 3;
     *((int*)mul->right) = 4;
     calc(mul);
 
     Node* sub = makeFunc(SUB);
-    sub->left = (Node*)malloc(sizeof(Node));
-    sub->right = (Node*)malloc(sizeof(Node));
     *((int*)sub->left) = 5;
     *((int*)sub->right) = 6;
     calc(sub);
 
     Node* fibo = makeFunc(FIBO);
-    fibo->left = (Node*)malloc(sizeof(Node));
     *((int*)fibo->left) = 10;
     calc(fibo);
 
