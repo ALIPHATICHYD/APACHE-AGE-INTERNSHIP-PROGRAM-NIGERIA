@@ -11,3 +11,10 @@ typedef enum TypeTag {
     SUB,
     FIBO
 } TypeTag;
+
+
+Node* makeFunc(TypeTag type) {
+    Node* node = (Node*)malloc(sizeof(Node));
+    node->type = type;
+    return node;
+}
