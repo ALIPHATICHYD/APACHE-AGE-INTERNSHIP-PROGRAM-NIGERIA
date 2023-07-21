@@ -24,3 +24,16 @@ int memoizedFib(int n, int* memo) {
     memo[n] = memoizedFib(n - 3, memo) + memoizedFib(n - 2, memo);
     return memo[n];
 }
+
+
+// Approach 3: Iterative function
+int iterativeFib(int n) {
+    int fib[n + 1];
+    fib[0] = 0;
+    fib[1] = 1;
+    fib[2] = 2;
+    for (int i = 3; i <= n; i++) {
+        fib[i] = fib[i - 3] + fib[i - 2];
+    }
+    return fib[n];
+}
