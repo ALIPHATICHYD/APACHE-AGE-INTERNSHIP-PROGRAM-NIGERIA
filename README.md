@@ -1,8 +1,7 @@
 ## 2023 Apache AGE Internship Program (Nigeria)
 
 ## Coding Test Questions
-
-## Question 1 and 2 (Backend)
+## Questions 1 and 2 (Backend)
 ▪ Developing Apache AGE requires a lot of logical thinking that backend development often requires.
 Question 3 (Database Driver / Interface)
 ▪ Database driver is a piece of software that allows applications to connect to and interact with the database system.
