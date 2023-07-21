@@ -51,6 +51,25 @@ void calc(Node* node) {
     }
 }
 
+int main() {
+    Node* add = (*makeFunc(ADD))(10, 6);
+    Node* mul = (*makeFunc(MUL))(5, 4);
+    Node* sub = (*makeFunc(SUB))(mul, add);
+    Node* fibo = (*makeFunc(FIBO))(sub, NULL);
+
+    calc(add);
+    calc(mul);
+    calc(sub);
+    calc(fibo);
+
+    free(add);
+    free(mul);
+    free(sub);
+    free(fibo);
+
+    return 0;
+}
+
 
 // Node* makeAdd(Node* left, Node* right) {
 //     Node* node = makeFunc(ADD);
@@ -81,3 +100,25 @@ void calc(Node* node) {
 // }
 
 
+// int main() {
+//     Node* add = makeFunc(ADD);
+//     *((int*)add + 1) = 10;
+//     *((int*)add + 2) = 20;
+//     calc(add);
+
+//     Node* mul = makeFunc(MUL);
+//     *((int*)mul + 1) = 10;
+//     *((int*)mul + 2) = 20;
+//     calc(mul);
+
+//     Node* sub = makeFunc(SUB);
+//     *((int*)sub + 1) = 10;
+//     *((int*)sub + 2) = 20;
+//     calc(sub);
+
+//     Node* fibo = makeFunc(FIBO);
+//     *((int*)fibo + 1) = 10;
+//     calc(fibo);
+
+//     return 0;
+// }
