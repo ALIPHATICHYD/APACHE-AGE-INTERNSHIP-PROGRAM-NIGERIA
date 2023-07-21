@@ -4,7 +4,7 @@ This program implements a fibonacci function using Dynamic Programming in C. It 
 
 ## Development Environment
 
-- Operating System: macOS
+- Operating System: Any platform that supports C compilation (e.g., Windows, macOS, Linux)
 - Compiler: Xcode Command Line Tools (GCC) or Visual Studio Code (VS Code)
 
 ## How to Compile and Run
