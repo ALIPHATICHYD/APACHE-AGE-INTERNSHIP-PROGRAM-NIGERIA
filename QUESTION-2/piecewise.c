@@ -37,3 +37,22 @@ int iterativeFib(int n) {
     }
     return fib[n];
 }
+
+int main() {
+    int n = 10; // You can change n to test with different values
+
+    // Approach 1: Recursive
+    printf("Recursive: F(%d) = %d\n", n, recursiveFib(n));
+
+    // Approach 2: Dynamic Programming (Memoization)
+    int memo[n + 1];
+    for (int i = 0; i <= n; i++) {
+        memo[i] = -1;
+    }
+    printf("Memoized: F(%d) = %d\n", n, memoizedFib(n, memo));
+
+    // Approach 3: Iterative
+    printf("Iterative: F(%d) = %d\n", n, iterativeFib(n));
+
+    return 0;
+}
